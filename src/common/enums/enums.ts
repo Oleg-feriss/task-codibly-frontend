@@ -1,0 +1,1 @@
+export {ProductsTableAccessor, ProductsTableHeader} from './table/table';

@@ -3,12 +3,13 @@ import { IProduct } from "../../models/IProduct"
 import { fetchProducts } from "./action-creators";
 
 interface ProductState {
-  products?: IProduct;
+  products: IProduct['data'];
   isLoading: boolean;
   error: string;
 }
 
 const initialState: ProductState = {
+  products: [],
   isLoading: false,
   error: '',
 }
@@ -21,7 +22,7 @@ const productSlice = createSlice({
     [fetchProducts.fulfilled.type]: (state, action: PayloadAction<IProduct>) => {
       state.isLoading = false;
       state.error = '';
-      state.products = action.payload;
+      state.products = action.payload.data;
     },
     [fetchProducts.pending.type]: (state) => {
       state.isLoading = true;

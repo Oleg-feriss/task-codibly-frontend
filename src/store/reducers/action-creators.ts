@@ -5,8 +5,12 @@ import { IProduct } from "../../models/IProduct";
 const fetchProducts = createAsyncThunk(
   'product/fetchAll',
   async (_, thunkAPI) => {
-    const response = await axios.get<IProduct>('https://reqres.in/api/products')
-    return response.data;
+    try {
+      const response = await axios.get<IProduct>('https://reqres.in/api/products');
+      return response.data;
+    } catch(err) {
+      return thunkAPI.rejectWithValue('Failed to load data');
+    }
   }
 )
 
