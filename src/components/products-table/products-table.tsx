@@ -29,6 +29,9 @@ const ProductsTable: FC = () => {
       defaultColumn={defaultColumn}
       placeholder='No data to display'
       isLoading={isLoading}
+      pagination={{
+        countItems: 5,
+      }}
     />
   );
 }
