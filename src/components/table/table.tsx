@@ -31,6 +31,8 @@ const Table: FC<Props> = ({
     canNextPage,
     canPreviousPage,
     prepareRow,
+    pageOptions,
+    state,
   } = useTable(
     {
       columns: columns as Column<Record<string, string>>[],
@@ -46,6 +48,8 @@ const Table: FC<Props> = ({
   const hasStrPlaceholder = Boolean(placeholder);
   const hasData = Boolean(data.length);
   const hasPlaceholder = hasStrPlaceholder && !hasData;
+
+  const { pageIndex } = state;
 
   return(
     <div
@@ -101,10 +105,25 @@ const Table: FC<Props> = ({
           <div className={styles.placeholder}>{placeholder}</div>
         )}
       </div>
-      <div>
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</button>
-        <button onClick={() => nextPage()} disabled={!canNextPage}>Next</button>
-      </div>
+        {pagination && (
+        <div className={styles.paginationBtns}>
+          <button 
+            onClick={() => previousPage()} 
+            disabled={!canPreviousPage} 
+            className={styles.paginationBtn}>
+              {'<<'}
+          </button>
+          <span className={styles.pageCounter}>
+            {pageIndex + 1} of {pageOptions.length}
+          </span>
+          <button 
+            onClick={() => nextPage()} 
+            disabled={!canNextPage} 
+            className={styles.paginationBtn}>
+              {'>>'}
+          </button>
+        </div>
+        )}
     </div>  
   );
 };

@@ -14,67 +14,39 @@
   top: 25%;
 }
 
-.tableHat {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
 .tableHeaderCell,
 .tableCell,
 .placeholder {
-  padding: 13px;
+  padding: 12px;
   overflow: hidden;
   font-weight: lighter;
   font-size: 16px;
   font-style: normal;
   line-height: 20px;
   white-space: nowrap;
-  text-align: left;
+  text-align: center;
   text-overflow: ellipsis;
+  width: 100px;
 }
 
 .tableHeaderRow {
   background-color: #393939;
-  border-bottom: 2px solid #282828;
+  border-bottom: 2px solid #181818;
 }
 
 .tableHeaderCell {
-  color: RGBA(255 255 255 / 69%);
-}
-
-.tableRow {
-  background-color: #393939;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .tableRow:hover {
-  background-color: #2a2a2a;
+  border: solid #ffffff;
   transition-duration: 500ms;
-  transition-property: background-color;
+  transition-property: border-color;
 }
 
 .tableCell {
   color: #ffffff;
-}
-
-.resizer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: -2px;
-  display: inline-block;
-  width: 2px;
-  height: 100%;
-  margin: auto 0;
-  background-color: #282828;
-  border-radius: 10px;
-  user-select: none;
-  touch-action: none;
-}
-
-.tableHeaderCell:last-child .resizer {
-  display: none;
 }
 
 .tableContainer {
@@ -88,4 +60,26 @@
   display: block;
   font-style: italic;
   text-align: center;
+}
+
+.paginationBtns {
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.paginationBtn {
+  border: none;
+  background: none;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0;
+}
+
+.paginationBtn:enabled:hover {
+  color: #ffffff;
+}
+
+.pageCounter {
+  margin: 0 20px;
 }
