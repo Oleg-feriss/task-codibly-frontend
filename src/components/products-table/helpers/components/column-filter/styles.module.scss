@@ -1,0 +1,10 @@
+.searchId {
+  width: 70px;
+  text-align: center;
+  border-radius: 10px;
+  -moz-appearance: textfield;
+}
+
+.searchId::-webkit-inner-spin-button { 
+  display: none;
+}

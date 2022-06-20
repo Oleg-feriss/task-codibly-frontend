@@ -1,10 +1,12 @@
 import { FC } from 'react';
-import './App.scss';
+import { Routes, Route } from 'react-router-dom';
+import { ProductsTable } from './components/products-table/products-table';
 
 const App: FC = () => {
   return (
-    <div className="App">
-    </div>
+    <Routes>
+      <Route path='/' element={<ProductsTable />} />
+    </Routes>
   );
 }
 

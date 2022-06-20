@@ -1,0 +1,85 @@
+.clientSideTable {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.tableWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  background-color: #3a3a3a;
+  border-radius: 20px;
+  position: absolute;
+  left: 35%;
+  top: 25%;
+}
+
+.tableHeaderCell,
+.tableCell,
+.placeholder {
+  padding: 12px;
+  overflow: hidden;
+  font-weight: lighter;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 20px;
+  white-space: nowrap;
+  text-align: center;
+  text-overflow: ellipsis;
+  width: 100px;
+}
+
+.tableHeaderRow {
+  background-color: #393939;
+  border-bottom: 2px solid #181818;
+}
+
+.tableHeaderCell {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.tableRow:hover {
+  border: solid #ffffff;
+  transition-duration: 500ms;
+  transition-property: border-color;
+}
+
+.tableCell {
+  color: #ffffff;
+}
+
+.tableContainer {
+  min-height: 300px;
+  overflow-x: auto;
+}
+
+.placeholder {
+  position: sticky;
+  left: 0;
+  display: block;
+  font-style: italic;
+  text-align: center;
+}
+
+.paginationBtns {
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.paginationBtn {
+  border: none;
+  background: none;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0;
+}
+
+.paginationBtn:enabled:hover {
+  color: #ffffff;
+}
+
+.pageCounter {
+  margin: 0 20px;
+}
