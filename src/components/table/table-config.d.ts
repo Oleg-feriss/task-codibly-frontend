@@ -20,13 +20,28 @@ declare module 'react-table' {
       UseSortByColumnProps<D> {}
 
   export interface TableOptions<D extends Record<string, unknown>>
-    extends UsePaginationOptions<D> {}
+    extends UseExpandedOptions<D>,
+      UseFiltersOptions<D>,
+      UseFiltersOptions<D>,
+      UseGlobalFiltersOptions<D>,
+      UseGroupByOptions<D>,
+      UsePaginationOptions<D>,
+      UseResizeColumnsOptions<D>,
+      UseRowSelectOptions<D>,
+      UseSortByOptions<D> {}
 
   export interface TableState<D extends Record<string, unknown> = Record<string, unknown>>
     extends UseColumnOrderState<D>,
-      UsePaginationState<D> {
+      UseExpandedState<D>,
+      UseFiltersState<D>,
+      UseGlobalFiltersState<D>,
+      UseGroupByState<D>,
+      UsePaginationState<D>,
+      UseResizeColumnsState<D>,
+      UseRowSelectState<D>,
+      UseSortByState<D> {
     rowCount: number
-  }
+    }
 
   export interface TableInstance<D extends Record<string, unknown> = Record<string, unknown>>
     extends UseColumnOrderInstanceProps<D>,

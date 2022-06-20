@@ -1,1 +1,1 @@
-export {ProductsTableAccessor, ProductsTableHeader} from './table/table';
+export { ProductsTableAccessor, ProductsTableHeader } from './table/table';

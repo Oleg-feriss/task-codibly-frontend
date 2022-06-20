@@ -1,9 +1,9 @@
 import { useEffect, useMemo, FC } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { fetchProducts } from '../../store/reducers/action-creators';
 import { Table } from '../table/table';
 import { getColumns, getRows } from './helpers/helpers';
-import { ColumnFilter } from './helpers/components/components/components';
+import { ColumnFilter } from './helpers/components/components';
 
 const ProductsTable: FC = () => {
   const dispatch = useAppDispatch();

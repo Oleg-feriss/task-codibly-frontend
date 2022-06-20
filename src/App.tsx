@@ -1,11 +1,12 @@
 import { FC } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { ProductsTable } from './components/products-table/products-table';
 
 const App: FC = () => {
   return (
-    <div>
-      <ProductsTable />
-    </div>
+    <Routes>
+      <Route path='/' element={<ProductsTable />} />
+    </Routes>
   );
 }
 

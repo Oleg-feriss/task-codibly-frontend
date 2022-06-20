@@ -1,5 +1,7 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useTable, Column, useFilters, usePagination } from 'react-table';
+import { useSearchParams } from 'react-router-dom';
+import { Loader } from '../loader/loader';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -26,6 +28,7 @@ const Table: FC<Props> = ({
     getTableBodyProps,
     headerGroups,
     page,
+    gotoPage,
     nextPage,
     previousPage,
     canNextPage,
@@ -45,11 +48,33 @@ const Table: FC<Props> = ({
     usePagination,
   );
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const { pageIndex } = state;
+  const searchQuery = searchParams.get('page') || '';
+
   const hasStrPlaceholder = Boolean(placeholder);
   const hasData = Boolean(data.length);
   const hasPlaceholder = hasStrPlaceholder && !hasData;
+  const hasPagination = Boolean(pagination);
+  const hasSearchQuery = Boolean(searchQuery); 
+  const currentPage = pageIndex + 1;
+  
+  const queryParams = {
+    id: '',
+    page: '',
+  };
 
-  const { pageIndex } = state;
+  useEffect(() => {
+    if (hasPagination && !hasSearchQuery) {
+      queryParams.page = currentPage.toString();
+      setSearchParams(queryParams);
+    }
+      
+    if (currentPage !== +searchQuery) {
+      gotoPage(currentPage);
+    };
+  });
 
   return(
     <div
@@ -57,8 +82,7 @@ const Table: FC<Props> = ({
     >
       <div className={styles.tableContainer}>
         {isLoading ? (
-          // <Loader />
-          <h1>Loading...</h1>
+          <Loader />
         ) : (
           <table {...getTableProps()} className={styles.clientSideTable}>
             <thead>
@@ -108,7 +132,12 @@ const Table: FC<Props> = ({
         {pagination && (
         <div className={styles.paginationBtns}>
           <button 
-            onClick={() => previousPage()} 
+            onClick={() => {
+              previousPage();
+              queryParams.id = searchParams.get('id') as string;
+              queryParams.page = pageIndex.toString();
+              setSearchParams(queryParams);
+            }} 
             disabled={!canPreviousPage} 
             className={styles.paginationBtn}>
               {'<<'}
@@ -117,7 +146,12 @@ const Table: FC<Props> = ({
             {pageIndex + 1} of {pageOptions.length}
           </span>
           <button 
-            onClick={() => nextPage()} 
+            onClick={() => {
+              nextPage();
+              queryParams.id = searchParams.get('id') as string;
+              queryParams.page = (pageIndex + 2).toString();
+              setSearchParams(queryParams);
+            }} 
             disabled={!canNextPage} 
             className={styles.paginationBtn}>
               {'>>'}
